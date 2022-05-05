@@ -5,6 +5,7 @@ const path = require('path')
 const io = require('socket.io')(http)
 const port = process.env.PORT || 8000
 const fetch = (...e)=>import("node-fetch").then(({default:t})=>t(...e))
+const env = require('dotenv').config().parsed;
 
 app.use(express.static(path.resolve('public')))
 
@@ -135,7 +136,7 @@ io.on('connection', (socket) => {
           withCredentials: true,
           mode: 'cors',
           headers: {
-            "X-Auth-Token": 'f9ab9ac547164a21b2de964baa0e5d51'
+            "X-Auth-Token": process.env.API_KEY
           }
         })
           .then(response => response.json())
