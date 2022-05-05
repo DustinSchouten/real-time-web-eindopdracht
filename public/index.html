@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football quiz app</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h1>Football quiz app</h1>
+    <section id="home_container" class="container">
+      <label for="name">Your name:</label>
+      <input type="text" id="name" name="name">
+      <p id="invalid_name_message">Your name cannot be empty!</p>
+      <label for="room_number">Your room number:</label>
+      <p id="free_room_number_suggestion"></p>
+      <input type="number" id="room_number" name="room_number">
+      <p id="invalid_room_number_message">Your room number cannot be empty!</p>
+      <p id="room_is_full_message"></p>
+      <button id="play_button">Play</button>
+      <p id="wait_for_opponent_join_room">Waiting for opponent joining this room</p>
+    </section>
+    <section id="game_container" class="container">
+      <p id="questionCounter"></p>
+      <img id="questionImage" src="background.jpg"></img>
+      <p id="question"></p>
+      <section class="answerOptionsList">
+        <section class="answerOption" data-id="0">
+          <p class="answerLetter">A</p>
+          <p class="answerOptionText"></p>
+          <p class="symbol"></p>
+        </section>
+        <section class="answerOption" data-id="1">
+          <p class="answerLetter">B</p>
+          <p class="answerOptionText"></p>
+          <p class="symbol"></p>
+        </section>
+        <section class="answerOption" data-id="2">
+          <p class="answerLetter">C</p>
+          <p class="answerOptionText"></p>
+          <p class="symbol"></p>
+        </section>
+        <section class="answerOption" data-id="3">
+          <p class="answerLetter">D</p>
+          <p class="answerOptionText"></p>
+          <p class="symbol"></p>
+        </section>
+      </section>
+      <section class="scorebar">
+        <p id="your_name" class="name"></p>
+        <p id="current_score">0-0</p>
+        <p id="opponent_name" class="name"></p>
+      </section>
+      <p id="opponent_answered_text">Wait for the opponent's guess...</p>
+    </section>
+    <section id="results_container" class="container">
+      <p class="results_title">Results:</p>
+      <img class="cup_image" src="cup.png" alt="cup_image">
+      <section class="player_result your_result">
+        <p id="result_your_name"></p>
+        <p id="result_your_final_score"></p>
+      </section>
+      <section class="player_result opponent_result">
+        <p id="result_opponent_name"></p>
+        <p id="result_opponent_final_score"></p>
+      </section>
+      <p id="result_text"></p>
+    </section>
+    <section id="disconnected_container" class="container">
+      <p class="disconnected_message">Your opponent has disconnected!</p>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>
