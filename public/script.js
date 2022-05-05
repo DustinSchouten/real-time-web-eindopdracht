@@ -136,18 +136,18 @@ document.querySelector('.answerOptionsList').addEventListener('click', e => {
       answered = true;
       if (inputAnswer == correctAnswer) {
         let symbol_element_clicked = document.querySelectorAll('.symbol')[data_id];
-        symbol_element_clicked.textContent = '✔';
+        symbol_element_clicked.innerHTML = '&#xf00c';
         symbol_element_clicked.style.color = '#0d0';
         your_score += 1;
         updateScore();
       }
       else {
         let symbol_element_clicked = document.querySelectorAll('.symbol')[data_id];
-        symbol_element_clicked.textContent = '✘';
+        symbol_element_clicked.innerHTML = '&#xf00d';
         symbol_element_clicked.style.color = '#d00';
         let correctAnswer_id = letter_to_id[correctAnswer];
         let symbol_element_correct = document.querySelectorAll('.symbol')[correctAnswer_id];
-        symbol_element_correct.textContent = '✔';
+        symbol_element_correct.innerHTML = '&#xf00c';
         symbol_element_correct.style.color = '#0d0';
       }
       if (opponent_answered == true) {
