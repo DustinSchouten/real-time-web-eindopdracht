@@ -12,46 +12,46 @@ app.use(express.static(path.resolve('public')))
 // The realtime users database that runs on the server
 let users_data = {}
   
-function generateStadionQuestions(data) {
-    const countries = ['Netherlands','England','Germany','Italy','Spain','France','Portugal'];
-    let all_stadiums = [];
-    let all_teams = [];
-    let all_logo_images = [];
-    data['teams'].forEach((data_piece) => {
-      let team = data_piece['name'];
-      let team_country = data_piece['area']['name'];
-      if (countries.includes(team_country)) {
-        let stadium = data_piece['venue'];
-        all_stadiums.push(stadium);
-        all_teams.push(team);
-        all_logo_images.push(data_piece['crestUrl'])
-      }
-    })
-    
-    const correct_stadium_idx = Math.floor(Math.random()*4);
-    const team_idx = Math.floor(Math.random()*all_teams.length)
-    const correct_team = all_teams[team_idx];
-    const correct_stadium = all_stadiums[team_idx];
-    all_stadiums.splice(all_stadiums.indexOf(correct_stadium),1);
-    let stadium_options = []
-    for (let idx=0; idx<4; idx++) {
-      let stadium = '';
-      if (idx == correct_stadium_idx) {
-        stadium = correct_stadium;
-      }
-      else {
-        stadium = all_stadiums[Math.floor(Math.random()*all_stadiums.length)];
-      }
-      stadium_options.push(stadium);
-      all_stadiums.splice(all_stadiums.indexOf(stadium),1);
+function generateStadiumQuestion(data) {
+  let countries = ['Netherlands','Belgium','Austria','England','Germany','Italy','Spain','France','Portugal','Turkey'];
+  let all_stadiums = [];
+  let all_teams = [];
+  let all_logo_images = [];
+  data['teams'].forEach((data_piece) => {
+    let team = data_piece['name'];
+    let team_country = data_piece['area']['name'];
+    if (countries.includes(team_country)) {
+      let stadium = data_piece['venue'];
+      all_stadiums.push(stadium);
+      all_teams.push(team);
+      all_logo_images.push(data_piece['crestUrl'])
     }
-  
-    let id_to_letter = {0:'A',1:'B',2:'C',3:'D'};
-    let correctAnswerLetter = id_to_letter[correct_stadium_idx];
-    let questionImageSrc = all_logo_images[team_idx];
-    questionData = {'questionImage':questionImageSrc,'question':'What is the name of the stadium of football club ' + correct_team + '?','answerOptionA':stadium_options[0],'answerOptionB':stadium_options[1],'answerOptionC':stadium_options[2],'answerOptionD':stadium_options[3],'correctAnswer':correctAnswerLetter}
+  })
 
-    return questionData;
+  const correct_stadium_idx = Math.floor(Math.random()*4);
+  const team_idx = Math.floor(Math.random()*all_teams.length)
+  const correct_team = all_teams[team_idx];
+  const correct_stadium = all_stadiums[team_idx];
+  all_stadiums.splice(all_stadiums.indexOf(correct_stadium),1);
+  let stadium_options = []
+  for (let idx=0; idx<4; idx++) {
+    let stadium = '';
+    if (idx == correct_stadium_idx) {
+      stadium = correct_stadium;
+    }
+    else {
+      stadium = all_stadiums[Math.floor(Math.random()*all_stadiums.length)];
+    }
+    stadium_options.push(stadium);
+    all_stadiums.splice(all_stadiums.indexOf(stadium),1);
+  }
+
+  let id_to_letter = {0:'A',1:'B',2:'C',3:'D'};
+  let correctAnswerLetter = id_to_letter[correct_stadium_idx];
+  let questionImageSrc = all_logo_images[team_idx];
+  questionData = {'team':correct_team,'questionImage':questionImageSrc,'question':'What is the name of the stadium of football club ' + correct_team + '?','answerOptionA':stadium_options[0],'answerOptionB':stadium_options[1],'answerOptionC':stadium_options[2],'answerOptionD':stadium_options[3],'correctAnswer':correctAnswerLetter}
+
+  return questionData;
 }
 
 function isRoomFull(room_number_to_check) {
@@ -141,8 +141,15 @@ io.on('connection', (socket) => {
         })
           .then(response => response.json())
           .then(function(data) {
-            for (let idx=0; idx<questionsAmount; idx++) {
-              questionsData[idx] = generateStadionQuestions(data);
+            let teams_with_question = []; // To avoid to get two questions about the same team;
+            let questionsGeneratedCounter = 0;
+            while (questionsGeneratedCounter < questionsAmount) {
+              let generatedQuestion = generateStadiumQuestion(data);
+              if (teams_with_question.includes(generatedQuestion['team']) == false) {
+                questionsData[questionsGeneratedCounter] = generatedQuestion;
+                questionsGeneratedCounter += 1;
+                teams_with_question.push(generatedQuestion['team'])
+              }
             }
             io.to(room_number).emit('receiveFetchedQuestion', questionsData);
           })
