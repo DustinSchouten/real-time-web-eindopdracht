@@ -40,7 +40,8 @@ input {
   width: calc(100% - 30px);
 }
 
-#free_room_number_suggestion {
+.give_room_number_to_friend_text,#free_room_number_suggestion {
+  font-size: 0.9em;
   color: #aaa;
   margin: 5px 0;
 }
@@ -106,7 +107,7 @@ input {
 .answerOption {
   display: flex;
   flex-direction: row;
-  border: 1px solid grey;
+  border: 1px solid #808080;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -159,7 +160,7 @@ input {
 
 #opponent_answered_text {
   display: none;
-  color: grey;
+  color: #aaa;
   padding: 10px 0;
   text-align: center;
   animation: waitingForOpponentColor 1s forwards 0s;
@@ -168,13 +169,13 @@ input {
 
 @keyframes waitingForOpponentColor {
   0% {
-    color: grey;
+    color: #aaa;
   }
   50% {
-    color: rgb(208, 204, 204);
+    color: #dfdede;
   }
   100% {
-    color: grey;
+    color: #aaa;
   }
 }
 
