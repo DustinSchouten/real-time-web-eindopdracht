@@ -2,15 +2,20 @@
 Dit project bevat een football quiz app waarbij twee spelers het real-time tegen elkaar op kunnen nemen door zoveel mogelijk vragen over voetbal goed te beantwoorden. Hierbij is gebruikgemaakt van HTML, CSS, JavaScript, Express, Node.js en Socket.io. Ook is er gebruikgemaakt van een externe API om football data op te halen waaruit de quizvragen worden gegenereerd.
 
 ## Table of Contents
-  * [De drie concepten (vooraf)](#de-drie-concepten--vooraf-)
-    + [Concept 1: Football quiz app (vooraf)](#concept-1--football-quiz-app--vooraf-)
-    + [Concept 2: Rijksmuseum quiz app (vooraf)](#concept-2--rijksmuseum-quiz-app--vooraf-)
-    + [Concept 3: Weather app (vooraf)](#concept-3--weather-app--vooraf-)
-  * [Het gekozen concept (vooraf)](#het-gekozen-concept--vooraf-)
-  * [De schermen (vooraf)](#de-schermen--vooraf-)
+  * [De drie concepten (vooraf)](#de-drie-concepten-(vooraf))
+    + [Concept 1: Football quiz app (vooraf)](#concept-1--football-quiz-app-(vooraf))
+    + [Concept 2: Rijksmuseum quiz app (vooraf)](#concept-2--rijksmuseum-quiz-app-(vooraf))
+    + [Concept 3: Weather app (vooraf)](#concept-3--weather-app-(vooraf))
+  * [Het gekozen concept (vooraf)](#het-gekozen-concept-(vooraf))
+  * [De schermen (vooraf)](#de-schermen-(vooraf))
   * [Het data lifecycle diagram](#het-data-lifecycle-diagram)
   * [De API](#de-api)
   * [Het datamodel en de dataopslag](#het-datamodel-en-de-dataopslag)
+  * [Het eindresultaat](#het-eindresultaat)
+    + [Het aanmeldscherm](#het-aanmeldscherm)
+    + [Het vragenscherm](#het-vragenscherm)
+    + [Het resultatenscherm](#het-resultatenscherm)
+    + [Het disconnectedscherm](#het-disconnectedscherm)
   * [Eventuele toekomstplannen](#eventuele-toekomstplannen)
   * [Bronnen](#bronnen)
 
@@ -57,20 +62,24 @@ Hieronder heb ik schematisch weergegeven welke data er in de app gebruikt wordt 
 ## Het eindresultaat
 Het eindresultaat is een single page web app met verschillende schermen. Alle schermen zijn aparte sections die met JavaScript getoond of weggehaald worden. Wanneer er meerdere pagina's zouden zijn, dan zouden de socket-verbindingen wegvallen op het moment dat je naar een andere pagina navigeert.
 
-### Het aanmeldscherm:
+### Het aanmeldscherm
 Dit is het eerste scherm dat een gebruiker te zien krijgt. Hier kunnen de spelers hun naam invoeren en een gedeelde roomnummer invoeren. De server geeft alvast een suggestie welk roomnummer nog vrij is.
+
 ![](projectbeschrijving_images/eindresultaat_1.png)
 
-### Het vragenscherm:
+### Het vragenscherm
 Wanneer beide spelers aangemeld zijn met hetzelfde roomnummer, wordt dit scherm getoond waarin alle vragen worden gespeeld. De quiz bevat 10 vragen.
+
 ![](projectbeschrijving_images/eindresultaat_2.png)
 
-### Het resultatenscherm:
+### Het resultatenscherm
 Wanneer alle vragen gespeeld zijn, wordt dit resultatenscherm getoond.
+
 ![](projectbeschrijving_images/eindresultaat_3.png)
 
-### Het disconnectedscherm:
+### Het disconnectedscherm
 Wanneer één van de spelers tijdens het spelen de verbinding verbreekt, krijgt de andere speler in dezelfde room dit scherm te zien.
+
 ![](projectbeschrijving_images/eindresultaat_4.png)
 
 ## Eventuele toekomstplannen
