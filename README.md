@@ -3,9 +3,9 @@ Dit project bevat een football quiz app waarbij twee spelers het real-time tegen
 
 ## Table of Contents
   * [De drie concepten](#de-drie-concepten))
-    + [Concept 1: Football quiz app](#concept-1--football-quiz-app))
-    + [Concept 2: Rijksmuseum quiz app](#concept-2--rijksmuseum-quiz-app))
-    + [Concept 3: Weather app](#concept-3--weather-app))
+    + [Concept 1: Football quiz app](#concept-1-football-quiz-app))
+    + [Concept 2: Rijksmuseum quiz app](#concept-2-rijksmuseum-quiz-app))
+    + [Concept 3: Weather app](#concept-3-weather-app))
   * [Het gekozen concept](#het-gekozen-concept))
   * [Het idee van de schermen](#het-idee-van-de-schermen)
   * [Het data lifecycle diagram](#het-data-lifecycle-diagram)
@@ -22,15 +22,15 @@ Dit project bevat een football quiz app waarbij twee spelers het real-time tegen
 ## De drie concepten
 Om alvast wat inspiratie te krijgen, heb ik onderzoek gedaan naar de verschillende beschikbare API's. Op basis daarvan heb ik drie verschillende ideeën globaal geschetst en beschreven.
 
-### Concept 1: Football quiz app
+### Concept 1 Football quiz app
 Het eerste idee is een quiz app met vragen over voetbal. Het idee is dat twee spelers het tegen elkaar opnemen om te zien wie de meeste kennis over voetbal heeft. Hierbij kunnen verschillende vragen over voetbal gesteld worden.
 ![](projectbeschrijving_images/c1_football_quiz_app.png)
 
-### Concept 2: Rijksmuseum quiz app
+### Concept 2 Rijksmuseum quiz app
 Het tweede idee lijkt sterk op het idee van de voetbalquiz. Het verschil is dat hier bij iedere vraag een schilderij wordt getoond en dat de spelers moeten raden welke schilder hierbij hoort.
 ![](projectbeschrijving_images/c2_rijksmuseum_quiz_app.png)
 
-### Concept 3: Weather app
+### Concept 3 Weather app
 Het derde idee is een weer app waarbij de gebruiker realtime data ontvangt van de huidige weersomstandigheden in een zelfgekozen stad.
 ![](projectbeschrijving_images/c3_weather_app.png)
 
