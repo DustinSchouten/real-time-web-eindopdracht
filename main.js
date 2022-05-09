@@ -13,7 +13,7 @@ app.use(express.static(path.resolve('public')))
 let users_data = {}
   
 function generateStadiumQuestion(data) {
-  let countries = ['Netherlands','Belgium','Austria','England','Germany','Italy','Spain','France','Portugal','Turkey'];
+  let countries = ['Netherlands','Belgium','Austria','England','Germany','Italy','Spain','France','Portugal','Turkey']; // Ik heb een paar bekende landen gedefinieerd, zodat er geen vragen gegenereerd worden over onbekendere teams die bijvoorbeeld in de eerste voorronde van de CL werden uitgeschakeld.
   let all_stadiums = [];
   let all_teams = [];
   let all_logo_images = [];
@@ -28,13 +28,13 @@ function generateStadiumQuestion(data) {
     }
   })
 
-  const correct_stadium_idx = Math.floor(Math.random()*4);
+  const correct_stadium_idx = Math.floor(Math.random()*4); // 4 staat voor de vier antwoordopties A, B, C en D
   const team_idx = Math.floor(Math.random()*all_teams.length)
   const correct_team = all_teams[team_idx];
   const correct_stadium = all_stadiums[team_idx];
   all_stadiums.splice(all_stadiums.indexOf(correct_stadium),1);
   let stadium_options = []
-  for (let idx=0; idx<4; idx++) {
+  for (let idx=0; idx<4; idx++) { // Zelfde geldt voor deze 4
     let stadium = '';
     if (idx == correct_stadium_idx) {
       stadium = correct_stadium;
@@ -71,19 +71,18 @@ function isRoomFull(room_number_to_check) {
 
 io.on('connection', (socket) => {
     socket.on('connected', (data,room_number) => {
-      if (isRoomFull(room_number) == false) { // If there is still place in a specific room.
+      if (isRoomFull(room_number) == false) { // Check of er nog plaats is in een bepaalde room nadat een nieuwe client in die room wil aanmelden.
         socket.join(room_number)
         let name = data['name'];
-        users_data[socket.id] = {'room_number':room_number,'name':name};
-        // io.to(room_number).emit('connected',name); // Send to everyone in specific room including sender.
+        users_data[socket.id] = {'room_number':room_number,'name':name}; // Meld de nieuwe gebruiker aan.
         console.log(socket.id,'connected')
         console.log(users_data)
         console.log('Users count: ', Object.keys(users_data).length)
-        if (isRoomFull(room_number)) { // If the room is filled once the user is signed in to a room. Then the game begins.
+        if (isRoomFull(room_number)) { // Als de room gevuld is nadat een client in die room is aangemeld, begint het spel.
           io.to(room_number).emit('start_game')
         }
       }
-      else { // If a specific room is already full, so that the user can't sign in to that room.
+      else { // Als de room al wel vol is, geef de gebruiker een melding dat die vol is.
         io.to(socket.id).emit('room_is_full', room_number);
       }
       console.log('')
@@ -112,8 +111,8 @@ io.on('connection', (socket) => {
           return users_data[key]['room_number'] === room_number && key != socket.id;
         });
         let opponent_socket = opponent_socket_list[0];
-        socket.broadcast.to(room_number).emit('disconnected');
-        delete users_data[socket.id];
+        socket.broadcast.to(room_number).emit('disconnected'); // Laat de andere gebruiker weten dat de tegenstander gedisconnect is.
+        delete users_data[socket.id]; // Verwijder beide spelers uit de real-time database op de server.
         delete users_data[opponent_socket];
         console.log(socket.id,'disconnected')
         console.log(users_data)
@@ -130,7 +129,7 @@ io.on('connection', (socket) => {
     socket.on('fetchQuestions', (room_number) => {
       const url = "https://api.football-data.org/v2/competitions/CL/teams";
       const questionsData = {}
-      const questionsAmount = 10;
+      const questionsAmount = 10; // Er worden 10 vragen gegenereerd
       fetch(url, {
           method: "GET",
           withCredentials: true,
@@ -141,7 +140,7 @@ io.on('connection', (socket) => {
         })
           .then(response => response.json())
           .then(function(data) {
-            let teams_with_question = []; // To avoid to get two questions about the same team;
+            let teams_with_question = []; // Zorg ervoor dat er niet twee vragen over hetzelfde team worden gegenereerd;
             let questionsGeneratedCounter = 0;
             while (questionsGeneratedCounter < questionsAmount) {
               let generatedQuestion = generateStadiumQuestion(data);
@@ -151,7 +150,7 @@ io.on('connection', (socket) => {
                 teams_with_question.push(generatedQuestion['team'])
               }
             }
-            io.to(room_number).emit('receiveFetchedQuestion', questionsData);
+            io.to(room_number).emit('receiveFetchedQuestion', questionsData); // Verstuur de gegenereerde quizvragen naar beide spelers in dezelfde room.
           })
           .catch(function(error) {
             console.log(error);
@@ -161,7 +160,7 @@ io.on('connection', (socket) => {
     socket.on('clickAnswer', (data,room_number) => {
         let name = data['name'];
         let inputAnswer = data['inputAnswer'];
-        socket.broadcast.to(room_number).emit('clickAnswer',{'name':name,'inputAnswer':inputAnswer});
+        socket.broadcast.to(room_number).emit('clickAnswer',{'name':name,'inputAnswer':inputAnswer}); // Verstuur ingevoerde antwoordopties naar de tegenstander.
     });
 })
 

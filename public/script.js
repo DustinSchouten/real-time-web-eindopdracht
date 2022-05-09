@@ -1,7 +1,7 @@
 let socket = io()
 
 let your_name = undefined;
-let opponent_name = undefined
+let opponent_name = undefined // Wordt opgehaald vanuit de server
 let room_number = undefined;
 let questionNumber = 1;
 let questionsData = undefined;
@@ -12,7 +12,7 @@ let answered = false;
 let opponent_answered = false;
 
 document.querySelector('#play_button').addEventListener('click',signInUser)
-set_container_section('home_container');
+set_container_section('home_container'); // Toom het aanmeldscherm (ook wel home genoemd)
 
 function set_container_section(container) {
   document.querySelector('#home_container').style.display = 'none';
@@ -76,10 +76,11 @@ function renderQuestion(questionData) {
   document.querySelectorAll('.answerOptionText')[1].textContent = answerOptionB;
   document.querySelectorAll('.answerOptionText')[2].textContent = answerOptionC;
   document.querySelectorAll('.answerOptionText')[3].textContent = answerOptionD;
-  // Resetting all values for new quetion
+  // Haal alle icons weg voor de nieuwe vraag
   for (let idx=0; idx<4; idx++) {
     document.querySelectorAll('.symbol')[idx].textContent = ''
   }
+  // Haal de melding weg dat de tegenstander geantwoord heeft
   document.querySelector('#opponent_answered_text').style.display = 'none';
   document.querySelector('#opponent_answered_text').style.animationName = 'waitingForOpponentColor';
   document.querySelector('#opponent_answered_text').textContent = "Wait for the opponent's guess...";
@@ -90,7 +91,7 @@ socket.on('receiveFetchedQuestion', data => {
   questionsData = data;
   questionsAmount = Object.keys(data).length;
   console.log(questionsData)
-  correctAnswer = questionsData[questionNumber-1]['correctAnswer'];
+  correctAnswer = questionsData[questionNumber-1]['correctAnswer']; // Render de allereerste vraag
   renderQuestion(questionsData[questionNumber-1])
 });
 
@@ -109,10 +110,8 @@ socket.on('disconnected', () => {
   set_container_section('disconnected_container');
 })
 
-// socket.on('connected', (data) => {
-//   console.log(data)
-// })
-socket.on('room_is_full', (room_number) => {
+
+socket.on('room_is_full', (room_number) => { // Laat zien als de room waarin de gebruiker wilt aanmelden al vol zit
   let room_is_full_element = document.querySelector('#room_is_full_message');
   room_is_full_element.style.display = 'inherit';
   room_is_full_element.textContent = 'Room ' + room_number.toString() + ' is already full!';
@@ -150,14 +149,14 @@ document.querySelector('.answerOptionsList').addEventListener('click', e => {
         symbol_element_correct.innerHTML = '&#xf00c';
         symbol_element_correct.style.color = '#0d0';
       }
-      if (opponent_answered == true) {
+      if (opponent_answered == true) { // Als beide spelers geantwoord hebben
         goToNextQuestion()
       }
     }
   }
 })
 
-socket.on('clickAnswer', (data) => {
+socket.on('clickAnswer', (data) => { // Laat zien wat de tegenstander gedaan heeft
   let opponent_answered_text = document.querySelector('#opponent_answered_text');
   opponent_answered_text.style.display = 'inherit'
   opponent_answered_text.style.color = 'black';
@@ -173,14 +172,14 @@ socket.on('clickAnswer', (data) => {
   opponent_answered = true;
   updateScore();
 
-  if (answered == true) {
-    goToNextQuestion()
+  if (answered == true) { // Als beide spelers geantwoord hebben
+    goToNextQuestion() // Render een nieuwe vraag
   }
 });
 
 function goToNextQuestion() {
-  setTimeout(function() {
-    if (questionNumber == questionsAmount) {
+  setTimeout(function() { // Wacht 3 seconden voordat de nieuwe vraag getoond wordt
+    if (questionNumber == questionsAmount) { // Als alle vragen gespeeld zijn
       set_container_section('results_container');
       document.querySelector('#result_your_name').textContent = your_name;
       document.querySelector('#result_your_final_score').textContent = your_score;
