@@ -2,12 +2,12 @@
 Dit project bevat een football quiz app waarbij twee spelers het real-time tegen elkaar op kunnen nemen door zoveel mogelijk vragen over voetbal goed te beantwoorden. Hierbij is gebruikgemaakt van HTML, CSS, JavaScript, Express, Node.js en Socket.io. Ook is er gebruikgemaakt van een externe API om football data op te halen waaruit de quizvragen worden gegenereerd.
 
 ## Table of Contents
-  * [De drie concepten (vooraf)](#de-drie-concepten-(vooraf))
-    + [Concept 1: Football quiz app (vooraf)](#concept-1--football-quiz-app-(vooraf))
-    + [Concept 2: Rijksmuseum quiz app (vooraf)](#concept-2--rijksmuseum-quiz-app-(vooraf))
-    + [Concept 3: Weather app (vooraf)](#concept-3--weather-app-(vooraf))
-  * [Het gekozen concept (vooraf)](#het-gekozen-concept-(vooraf))
-  * [De schermen (vooraf)](#de-schermen-(vooraf))
+  * [De drie concepten](#de-drie-concepten))
+    + [Concept 1: Football quiz app](#concept-1--football-quiz-app))
+    + [Concept 2: Rijksmuseum quiz app](#concept-2--rijksmuseum-quiz-app))
+    + [Concept 3: Weather app](#concept-3--weather-app))
+  * [Het gekozen concept](#het-gekozen-concept))
+  * [Het idee van de schermen](#het-idee-van-de-schermen)
   * [Het data lifecycle diagram](#het-data-lifecycle-diagram)
   * [De API](#de-api)
   * [Het datamodel en de dataopslag](#het-datamodel-en-de-dataopslag)
@@ -19,25 +19,25 @@ Dit project bevat een football quiz app waarbij twee spelers het real-time tegen
   * [Eventuele toekomstplannen](#eventuele-toekomstplannen)
   * [Bronnen](#bronnen)
 
-## De drie concepten (vooraf)
+## De drie concepten
 Om alvast wat inspiratie te krijgen, heb ik onderzoek gedaan naar de verschillende beschikbare API's. Op basis daarvan heb ik drie verschillende ideeën globaal geschetst en beschreven.
 
-### Concept 1: Football quiz app (vooraf)
+### Concept 1: Football quiz app
 Het eerste idee is een quiz app met vragen over voetbal. Het idee is dat twee spelers het tegen elkaar opnemen om te zien wie de meeste kennis over voetbal heeft. Hierbij kunnen verschillende vragen over voetbal gesteld worden.
 ![](projectbeschrijving_images/c1_football_quiz_app.png)
 
-### Concept 2: Rijksmuseum quiz app (vooraf)
+### Concept 2: Rijksmuseum quiz app
 Het tweede idee lijkt sterk op het idee van de voetbalquiz. Het verschil is dat hier bij iedere vraag een schilderij wordt getoond en dat de spelers moeten raden welke schilder hierbij hoort.
 ![](projectbeschrijving_images/c2_rijksmuseum_quiz_app.png)
 
-### Concept 3: Weather app (vooraf)
+### Concept 3: Weather app
 Het derde idee is een weer app waarbij de gebruiker realtime data ontvangt van de huidige weersomstandigheden in een zelfgekozen stad.
 ![](projectbeschrijving_images/c3_weather_app.png)
 
-## Het gekozen concept (vooraf)
+## Het gekozen concept
 Het concept dat ik ga uitwerken is de voetbal quiz app. Nog voordat ik ben begonnen met ontwikkelen, heb ik eerst mijn ideeën wat verder uitgewerkt. Ik heb eerst een aantal schermen geschetst om te laten zien hoe de app er uiteindelijk uit moet zien. Hieronder leg ik de schermen uit:
 
-## De schermen (vooraf)
+## Het idee van de schermen
 Omdat je in mijn potentiële app met z'n tweeën tegen elkaar speelt, heb ik bedacht dat je in socket.io rooms kan maken door de ene speler een gegenereerde code (het room id) aan de andere speler te laten geven, zodat deze twee spelers in dezelfde room zitten.
 ![](projectbeschrijving_images/welke_speler.png)
 ![](projectbeschrijving_images/spelers_connecten.png)
