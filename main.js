@@ -152,8 +152,25 @@ io.on('connection', (socket) => {
             }
             io.to(room_number).emit('receiveFetchedQuestion', questionsData); // Verstuur de gegenereerde quizvragen naar beide spelers in dezelfde room.
           })
-          .catch(function(error) {
-            console.log(error)
+          .catch(function(error) { // Precies dezelfde functionaliteit als bij disconnected
+            if (error.code == 'ENOTFOUND') {
+              if (Object.keys(users_data).includes(socket.id)) {
+                let room_number = users_data[socket.id]['room_number'];
+                let opponent_socket_list = Object.keys(users_data).filter(function(key) {
+                  return users_data[key]['room_number'] === room_number && key != socket.id;
+                });
+                let opponent_socket = opponent_socket_list[0];
+                io.to(room_number).emit('cannotAccesAPI'); // Laat gebruiker weten dat de API niet bereikt kan worden.
+                delete users_data[socket.id]; // Verwijder beide spelers uit de real-time database op de server.
+                delete users_data[opponent_socket];
+                console.log(socket.id,'disconnected')
+                console.log(users_data)
+                console.log('Users count: ', Object.keys(users_data).length)
+                console.log('')
+                console.log('') 
+              }
+              io.to(room_number).emit('cannotAccesAPI');
+            }
           });
         });
 
