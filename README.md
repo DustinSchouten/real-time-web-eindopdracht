@@ -53,7 +53,7 @@ Zie het diagram hieronder:
 ![](projectbeschrijving_images/data_lifecycle_diagram.png)
 
 ## De API
-Wanneer twee clients in dezelfde room zich aangemeld hebben, wordt er een API-call gedaan. De API die ik gebruik is afkomstig van football-data.org. De API-call die ik maak, gaat naar de URL: https://api.football-data.org/v2/competitions/CL/teams. Dit geeft mij alle teams die in het afgelopen voetbalseizoen in de Champions League actief zijn geweest. Hierbij wordt ook per team de naam van het voetbalstadion en een URL naar het clublogo meegeleverd. Deze gegevens heb ik gefilterd en hiermee heb ik de vragen gegenereerd.
+Wanneer twee clients in dezelfde room zich aangemeld hebben, wordt er een API-call gedaan. De API die ik gebruik is afkomstig van football-data.org. De API-call die ik maak, gaat naar de URL: https://api.football-data.org/v2/competitions/CL/teams (werkt alleen met geldige API-key). Dit geeft mij alle teams die in het afgelopen voetbalseizoen in de Champions League actief zijn geweest. Hierbij wordt ook per team de naam van het voetbalstadion en een URL naar het clublogo meegeleverd. Deze gegevens heb ik gefilterd en hiermee heb ik de vragen gegenereerd.
 Wanneer twee nieuwe clients in dezelfde room zich aangemeld hebben, krijgen zij dus niet dezelfde quizvragen te zien als de andere twee clients.
 
 ## Het datamodel en de dataopslag
