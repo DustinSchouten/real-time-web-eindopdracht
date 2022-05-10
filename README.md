@@ -90,7 +90,6 @@ Wanneer er problemen zijn met het ophalen van de football data met de API, wordt
 
 ![](projectbeschrijving_images/eindresultaat_5.png)
 
-
 ## Eventuele toekomstplannen
 Wanneer ik besluit om dit project in de toekomst te verbeteren of uit te breiden, zal ik onderstaande acties ondernemen:
 - Ik zal proberen om bij het opvragen van de football data meerdere API-calls te doen. Hierdoor kan ik meer soorten vragen maken. Op dit moment heb ik namelijk alleen vragen over namen van voetbalstadions. Als ik meer verschillende soorten vragen kan toevoegen, dacht ik aan vragen als "Welke speler komt uit (een land)?", "Hoeveel doelpunten heeft (speler X) dit seizoen gemaakt?".
