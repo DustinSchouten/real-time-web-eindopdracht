@@ -27,23 +27,23 @@ Om alvast wat inspiratie te krijgen, heb ik onderzoek gedaan naar de verschillen
 
 ### Concept 1 Football quiz app
 Het eerste idee is een quiz app met vragen over voetbal. Het idee is dat twee spelers het tegen elkaar opnemen om te zien wie de meeste kennis over voetbal heeft. Hierbij kunnen verschillende vragen over voetbal gesteld worden.
-![](projectbeschrijving_images/c1_football_quiz_app.png)
+![](projectbeschrijving_images/c1_football_quiz_app.jpg)
 
 ### Concept 2 Rijksmuseum quiz app
 Het tweede idee lijkt sterk op het idee van de voetbalquiz. Het verschil is dat hier bij iedere vraag een schilderij wordt getoond en dat de spelers moeten raden welke schilder hierbij hoort.
-![](projectbeschrijving_images/c2_rijksmuseum_quiz_app.png)
+![](projectbeschrijving_images/c2_rijksmuseum_quiz_app.jpg)
 
 ### Concept 3 Weather app
 Het derde idee is een weer app waarbij de gebruiker realtime data ontvangt van de huidige weersomstandigheden in een zelfgekozen stad.
-![](projectbeschrijving_images/c3_weather_app.png)
+![](projectbeschrijving_images/c3_weather_app.jpg)
 
 ## Het gekozen concept
 Het concept dat ik ga uitwerken is de voetbal quiz app. Nog voordat ik ben begonnen met ontwikkelen, heb ik eerst mijn ideeën wat verder uitgewerkt. Ik heb eerst een aantal schermen geschetst om te laten zien hoe de app er uiteindelijk uit moet zien. Hieronder leg ik de schermen uit:
 
 ## Het idee van de schermen
 Omdat je in mijn potentiële app met z'n tweeën tegen elkaar speelt, heb ik bedacht dat je in socket.io rooms kan maken door de ene speler een gegenereerde code (het room id) aan de andere speler te laten geven, zodat deze twee spelers in dezelfde room zitten.
-![](projectbeschrijving_images/welke_speler.png)
-![](projectbeschrijving_images/spelers_connecten.png)
+![](projectbeschrijving_images/welke_speler.jpg)
+![](projectbeschrijving_images/spelers_connecten.jpg)
 
 Het spel zelf heeft als idee dat je een aantal vragen krijgt die op basis van de data uit de API worden gegenereerd. Een speler krijgt bij het beantwoorden van een vraag meteen te zien of hij/zij de vraag goed of fout heeft beantwoord. Wanneer beide spelers de vraag hebben beantwoord (ongeacht goed of fout), gaat de app door naar de volgende vraag. Als alle vragen voorbij zijn, gaat de app over naar een resultatenscherm waarin te zien is wie de meeste vragen goed heeft beantwoord.
 ![](projectbeschrijving_images/game_en_resultaten.png)
