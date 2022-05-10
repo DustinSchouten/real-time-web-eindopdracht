@@ -15,12 +15,12 @@ document.querySelector('#play_button').addEventListener('click',signInUser)
 set_container_section('home_container'); // Toom het aanmeldscherm (ook wel home genoemd)
 
 function set_container_section(container) {
-  document.querySelector('#home_container').style.display = 'none';
-  document.querySelector('#game_container').style.display = 'none';
-  document.querySelector('#disconnected_container').style.display = 'none';
-  document.querySelector('#results_container').style.display = 'none';
-  document.querySelector('#api_error_container').style.display = 'none';
-  document.querySelector('#'+container).style.display = 'inherit';
+  document.querySelector('#home_container').classList.add('invisible');
+  document.querySelector('#game_container').classList.add('invisible');
+  document.querySelector('#disconnected_container').classList.add('invisible');
+  document.querySelector('#results_container').classList.add('invisible');
+  document.querySelector('#api_error_container').classList.add('invisible');
+  document.querySelector('#'+container).classList.remove('invisible');
 }
 
 socket.emit('get_free_room_number_suggestion');
@@ -33,21 +33,21 @@ function signInUser() {
   your_name = document.querySelector('#name').value;
   room_number = document.querySelector('#room_number').value;
   if (your_name == '') {
-    document.querySelector('#invalid_name_message').style.display = 'inherit';
+    document.querySelector('#invalid_name_message').classList.remove('invisible');
   }
   else {
-    document.querySelector('#invalid_name_message').style.display = 'none';
+    document.querySelector('#invalid_name_message').classList.add('invisible');
   }
   if (room_number == '') {
-    document.querySelector('#invalid_room_number_message').style.display = 'inherit';
+    document.querySelector('#invalid_room_number_message').classList.remove('invisible');
   }
   else {
-    document.querySelector('#invalid_room_number_message').style.display = 'none';
+    document.querySelector('#invalid_room_number_message').classList.add('invisible');
   }
   if (your_name != '' && room_number != '') {
-    document.querySelector('#room_is_full_message').style.display = 'none';
-    document.querySelector('#play_button').style.display = 'none';
-    document.querySelector('#wait_for_opponent_join_room').style.display = 'inherit';
+    document.querySelector('#room_is_full_message').classList.add('invisible');
+    document.querySelector('#play_button').classList.add('invisible');
+    document.querySelector('#wait_for_opponent_join_room').classList.remove('invisible');
     socket.emit('connected',{'name':your_name},room_number);
   }
 }
@@ -82,7 +82,7 @@ function renderQuestion(questionData) {
     document.querySelectorAll('.symbol')[idx].textContent = ''
   }
   // Haal de melding weg dat de tegenstander geantwoord heeft
-  document.querySelector('#opponent_answered_text').style.display = 'none';
+  document.querySelector('#opponent_answered_text').classList.add('invisible');
   document.querySelector('#opponent_answered_text').style.animationName = 'waitingForOpponentColor';
   document.querySelector('#opponent_answered_text').textContent = "Wait for the opponent's guess...";
 
@@ -128,10 +128,10 @@ socket.on('cannotAccesAPI', () => {
 
 socket.on('room_is_full', (room_number) => { // Laat zien als de room waarin de gebruiker wilt aanmelden al vol zit
   let room_is_full_element = document.querySelector('#room_is_full_message');
-  room_is_full_element.style.display = 'inherit';
+  room_is_full_element.classList.remove('invisible');
   room_is_full_element.textContent = 'Room ' + room_number.toString() + ' is already full!';
-  document.querySelector('#wait_for_opponent_join_room').style.display = 'none';
-  document.querySelector('#play_button').style.display = 'inherit';
+  document.querySelector('#wait_for_opponent_join_room').classList.add('invisible');
+  document.querySelector('#play_button').classList.remove('invisible');
 })
 
 function updateScore() {
@@ -146,7 +146,7 @@ document.querySelector('.answerOptionsList').addEventListener('click', e => {
     let inputAnswer = id_to_letter[data_id];
     if (answered == false) {
       socket.emit('clickAnswer', {'name':your_name,'inputAnswer':inputAnswer},room_number);
-      document.querySelector('#opponent_answered_text').style.display = 'inherit';
+      document.querySelector('#opponent_answered_text').classList.remove('invisible');
       answered = true;
       if (inputAnswer == correctAnswer) {
         let symbol_element_clicked = document.querySelectorAll('.symbol')[data_id];
@@ -173,7 +173,7 @@ document.querySelector('.answerOptionsList').addEventListener('click', e => {
 
 socket.on('clickAnswer', (data) => { // Laat zien wat de tegenstander gedaan heeft
   let opponent_answered_text = document.querySelector('#opponent_answered_text');
-  opponent_answered_text.style.display = 'inherit'
+  opponent_answered_text.classList.remove('invisible');
   opponent_answered_text.style.color = 'black';
   document.querySelector('#opponent_answered_text').style.animationName = 'none';
   
