@@ -52,7 +52,6 @@ Het spel zelf heeft als idee dat je een aantal vragen krijgt die op basis van de
 Hieronder heb ik geprobeerd om de datastroom tussen de clients, de server en de API te visualiseren.
 Zie het diagram hieronder:
 ![](projectbeschrijving_images/data_lifecycle_diagram.png)
-Zoals in het diagram te zien is, draait er een minitabel (een dictionary object in JavaScript) op de server. De scores van de spelers tijdens de game worden op de clients opgeslagen als variabelen "your_score" en "opponent_score". De reden waarom ik wel de namen en roomnummers op de server wil laten opslaan, is dat er hiermee gecheckt kan worden of een betreffende room nog vrij is of niet. Wanneer een game begint, kan bovendien meteen de naam van de andere client in dezelfde room (oftewel de tegenstander) worden doorgegeven.
 
 ## De API
 Wanneer twee clients in dezelfde room zich aangemeld hebben, wordt er een API-call gedaan. De API die ik gebruik is afkomstig van football-data.org. De API-call die ik maak, gaat naar de URL: https://api.football-data.org/v2/competitions/CL/teams. Dit geeft mij alle teams die in het afgelopen voetbalseizoen in de Champions League actief zijn geweest. Hierbij wordt ook per team de naam van het voetbalstadion en een URL naar het clublogo meegeleverd. Deze gegevens heb ik gefilterd en hiermee heb ik de vragen gegenereerd.
@@ -61,6 +60,7 @@ Wanneer twee nieuwe clients in dezelfde room zich aangemeld hebben, krijgen zij 
 ## Het datamodel en de dataopslag
 Hieronder heb ik schematisch weergegeven welke data er in de app gebruikt wordt en hoe deze data zich tot elkaar verhoudt. Zie het datamodel hieronder:
 ![](projectbeschrijving_images/datamodel.png)
+Zoals in het diagram te zien is, draait er een minitabel (een dictionary object in JavaScript) op de server. De scores van de spelers tijdens de game worden op de clients opgeslagen als variabelen "your_score" en "opponent_score". De reden waarom ik wel de namen en roomnummers op de server wil laten opslaan, is dat er hiermee gecheckt kan worden of een betreffende room nog vrij is of niet. Wanneer een game begint, kan bovendien meteen de naam van de andere client in dezelfde room (oftewel de tegenstander) worden doorgegeven.
 
 ## Het eindresultaat
 Het eindresultaat is een single page web app met verschillende schermen. Alle schermen zijn aparte sections die met JavaScript getoond of weggehaald worden. Wanneer er meerdere pagina's zouden zijn, dan zouden de socket-verbindingen wegvallen op het moment dat je naar een andere pagina navigeert.
