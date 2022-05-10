@@ -212,3 +212,10 @@ input {
   width: 100%;
   text-align: center;
 }
+
+/* API error container */
+.api_error_message {
+  font-size: 1.25em;
+  width: 100%;
+  text-align: center;
+}

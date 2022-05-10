@@ -19,6 +19,7 @@ function set_container_section(container) {
   document.querySelector('#game_container').style.display = 'none';
   document.querySelector('#disconnected_container').style.display = 'none';
   document.querySelector('#results_container').style.display = 'none';
+  document.querySelector('#api_error_container').style.display = 'none';
   document.querySelector('#'+container).style.display = 'inherit';
 }
 
@@ -110,6 +111,20 @@ socket.on('disconnected', () => {
   set_container_section('disconnected_container');
 })
 
+socket.on('cannotAccesAPI', () => {
+  // Reset all the variables
+  your_name = undefined;
+  opponent_name = undefined
+  room_number = undefined;
+  questionNumber = 1;
+  questionsData = undefined;
+  questionsAmount = undefined;
+  your_score = 0;
+  opponent_score = 0;
+  answered = false;
+  opponent_answered = false;
+  set_container_section('api_error_container');
+})
 
 socket.on('room_is_full', (room_number) => { // Laat zien als de room waarin de gebruiker wilt aanmelden al vol zit
   let room_is_full_element = document.querySelector('#room_is_full_message');
