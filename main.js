@@ -152,7 +152,7 @@ io.on('connection', (socket) => {
             }
             io.to(room_number).emit('receiveFetchedQuestion', questionsData); // Verstuur de gegenereerde quizvragen naar beide spelers in dezelfde room.
           })
-          .catch(function(error) { // Precies dezelfde functionaliteit als bij disconnected
+          .catch(function(error) {
             console.log(error)
           });
         });
