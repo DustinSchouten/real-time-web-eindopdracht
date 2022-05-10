@@ -60,7 +60,7 @@ Wanneer twee nieuwe clients in dezelfde room zich aangemeld hebben, krijgen zij 
 Hieronder heb ik schematisch weergegeven welke data er in de app gebruikt wordt en hoe deze data zich tot elkaar verhoudt. Zie het datamodel hieronder:
 ![](projectbeschrijving_images/datamodel.png)
 
-Zoals in het diagram te zien is, draait er een minitabel (een dictionary object in JavaScript) op de server. De scores van de spelers tijdens de game worden op de clients opgeslagen als variabelen "your_score" en "opponent_score". De reden waarom ik wel de namen en roomnummers op de server wil laten opslaan, is dat er hiermee gecheckt kan worden of een betreffende room nog vrij is of niet. Wanneer een game begint, kan bovendien meteen de naam van de andere client in dezelfde room (oftewel de tegenstander) worden doorgegeven.
+Zoals in het diagram te zien is, draait er een minitabel genaamd 'usersData' (een dictionary object in JavaScript) op de server. De scores van de spelers tijdens de game worden op de clients opgeslagen als variabelen "your_score" en "opponent_score". De reden waarom ik wel de namen en roomnummers op de server wil laten opslaan, is dat er hiermee gecheckt kan worden of een betreffende room nog vrij is of niet. Wanneer een game begint, kan bovendien meteen de naam van de andere client in dezelfde room (oftewel de tegenstander) worden doorgegeven.
 
 ## Het eindresultaat
 Het eindresultaat is een single page web app met verschillende schermen. Alle schermen zijn aparte sections die met JavaScript getoond of weggehaald worden. Wanneer er meerdere pagina's zouden zijn, dan zouden de socket-verbindingen wegvallen op het moment dat je naar een andere pagina navigeert.
