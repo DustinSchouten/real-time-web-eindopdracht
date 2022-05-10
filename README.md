@@ -18,7 +18,6 @@ Het live project is hier te bereiken: https://football-quiz-app-500895931.heroku
     + [Het vragenscherm](#het-vragenscherm)
     + [Het resultatenscherm](#het-resultatenscherm)
     + [Het disconnectedscherm](#het-disconnectedscherm)
-    + [Het API error scherm](#het-API-error-scherm)
   * [Eventuele toekomstplannen](#eventuele-toekomstplannen)
   * [Bronnen](#bronnen)
 
@@ -84,11 +83,6 @@ Wanneer alle vragen gespeeld zijn, wordt dit resultatenscherm getoond.
 Wanneer één van de spelers tijdens het spelen de verbinding verbreekt, krijgt de andere speler in dezelfde room dit scherm te zien.
 
 ![](projectbeschrijving_images/eindresultaat_4.png)
-
-### Het API error scherm
-Wanneer er problemen zijn met het ophalen van de football data met de API, wordt meteen na de start van het spel dit scherm getoond.
-
-![](projectbeschrijving_images/eindresultaat_5.png)
 
 ## Eventuele toekomstplannen
 Wanneer ik besluit om dit project in de toekomst te verbeteren of uit te breiden, zal ik onderstaande acties ondernemen:
