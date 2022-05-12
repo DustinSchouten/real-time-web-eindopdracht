@@ -1,4 +1,4 @@
-# Real time web
+# Real time football quiz web app
 Dit project bevat een football quiz app waarbij twee spelers het real-time tegen elkaar op kunnen nemen door zoveel mogelijk vragen over voetbal goed te beantwoorden. Hierbij is gebruikgemaakt van HTML, CSS, JavaScript, Express, Node.js en Socket.io. Ook is er gebruikgemaakt van een externe API om football data op te halen waaruit de quizvragen worden gegenereerd.
 
 Het live project is hier te bereiken: https://football-quiz-app-500895931.herokuapp.com/
