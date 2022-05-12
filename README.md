@@ -13,6 +13,7 @@ Het live project is hier te bereiken: https://football-quiz-app-500895931.heroku
   * [Het data lifecycle diagram](#het-data-lifecycle-diagram)
   * [De API](#de-api)
   * [Het datamodel en de dataopslag](#het-datamodel-en-de-dataopslag)
+  * [Overzicht van de socket events](#overzicht-van-de-socket-events)
   * [Het eindresultaat](#het-eindresultaat)
     + [Het aanmeldscherm](#het-aanmeldscherm)
     + [Het vragenscherm](#het-vragenscherm)
@@ -62,7 +63,7 @@ Hieronder heb ik schematisch weergegeven welke data er in de app gebruikt wordt 
 
 Zoals in het diagram te zien is, draait er een minitabel genaamd 'usersData' (een dictionary object in JavaScript) op de server. De scores van de spelers tijdens de game worden op de clients opgeslagen als variabelen "your_score" en "opponent_score". De reden waarom ik wel de namen en roomnummers op de server wil laten opslaan, is dat er hiermee gecheckt kan worden of een betreffende room nog vrij is of niet. Wanneer een game begint, kan bovendien meteen de naam van de andere client in dezelfde room (oftewel de tegenstander) worden doorgegeven.
 
-## Overzicht van de socket-events
+## Overzicht van de socket events
 Hieronder heb ik in een tabel alle socket-events in detail uitgelegd die in de app voor kunnen komen. Zie de tabel hieronder:
 
 | **Socket event**                             | **Event uitgelegd**                                                                                                                                                                                    | **Wanneer uitgevoerd?**                                                                 |
